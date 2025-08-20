@@ -16,7 +16,79 @@ output:
 -   [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
 
 ------------------------------------------------------------------------
+```{r data}
+library(dplyr)
+library(tidyverse)
+students <- data.frame(
+  student_id = c(1, 2, 3, 4, 5, 6, 7),
+  name = c("Alice", "Bob", "Charlie", "David", "Eva", "Frank", "Grace"),
+  department_id = c(201, 202, 201, 202, 202, 203, NA),
+  gender = c("F", "M", "M", "M", "F", "M", "F")
+)
 
+
+scores <- data.frame(
+  student_id = c(2, 3, 5, 6, 8),
+  score = c(88, 92, 85, 63, 81)
+)
+
+
+departments <- data.frame(
+  department_number = c(201, 202),
+  department_name = c("Statistics", "Biology")
+)
+
+```
+
+```{r left-join}
+student_score <-students |> 
+  left_join(scores, by = 'student_id')
+
+student_dept <- students |> 
+  left_join(departments, by=c('department_id'='department_number'))
+
+student_score
+student_dept
+```
+```{r right-join}
+score_student <-scores |> 
+  left_join(students, by = 'student_id')
+
+dept_student <- departments |> 
+  left_join(students, by=c('department_number'='department_id'))
+
+score_student
+dept_student
+```
+```{r inner-join}
+df_inner <- students |> 
+  inner_join(scores, by='student_id')
+
+df_inner
+```
+
+```{r full-join}
+df_full <- students |> 
+  full_join(scores,by='student_id')
+
+df_full
+```
+
+```{r all}
+df_all <- students |> 
+  full_join(scores,by='student_id') |> 
+  full_join(departments, by=c('department_id'='department_number'))
+
+df_all
+```
+
+```{r wrangling}
+df_all |> 
+  drop_na() |> 
+  group_by(gender) |> 
+  summarise(avg_score=mean(score))
+
+```
 
 
 
