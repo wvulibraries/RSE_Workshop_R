@@ -17,6 +17,12 @@ output:
 
 ------------------------------------------------------------------------
 
+
+
+
+
+------------------------------------------------------------------------
+
 # About R Markdown
 
 R Markdown allows you to blend formatted prose with code to create reproducible scientific documents that can be outputted in a HTML, PDF, and MS Word document.
