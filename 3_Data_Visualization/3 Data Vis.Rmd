@@ -40,7 +40,7 @@ library(tidyverse)
 
 visualize your data with ggplot
 
--   [ggplot package]("https://ggplot2.tidyverse.org/")
+-   [ggplot package](https://ggplot2.tidyverse.org/)
 
 <br />
 
@@ -699,5 +699,6 @@ p <- ggplot(demo_summary, aes(
   labs(x = "Car Category", y = "Income", fill = "Education")
 
 ggplotly(p, tooltip = "text")
+
 
 ```
